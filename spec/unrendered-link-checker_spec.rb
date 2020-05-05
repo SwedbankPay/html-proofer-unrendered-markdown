@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe 'Unrendered link checker' do
+RSpec.describe 'Unrendered link checker' do
     it 'gives a error message when finding a broken link' do
         file = "#{FIXTURES_DIR}/unrendered_link.html"
         proofer = run_proofer(file, :file, {:check_unrendered_link => true})
