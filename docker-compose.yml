@@ -8,3 +8,5 @@ services:
         - ruby:2.6
       dockerfile: .docker/Dockerfile
     container_name: html_checker
+    volumes:
+      - .:/gem
