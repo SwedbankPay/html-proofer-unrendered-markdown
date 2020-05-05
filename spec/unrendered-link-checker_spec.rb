@@ -13,4 +13,10 @@ RSpec.describe 'Unrendered link checker' do
         expect(proofer.failed_tests.last).to eq nil
     end
 
+    it 'does not emit anything when configured to run and there is no problem' do
+        file = "#{FIXTURES_DIR}/just_fine.html"
+        proofer = run_proofer(file, :file, {:check_unrendered_link => true})
+        expect(proofer.failed_tests.last).to eq nil
+    end
+
 end
