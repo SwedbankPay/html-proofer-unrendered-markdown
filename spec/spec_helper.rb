@@ -1,3 +1,6 @@
+require 'html-proofer'
+require_relative '../lib/html-proofer-unrendered-markdown'
+
 def make_proofer(item, type, opts)
   opts[:log_level] ||= :error
   case type
@@ -121,6 +124,5 @@ RSpec.configure do |config|
   # Setting this allows you to use `--seed` to deterministically reproduce
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
-  Kernel.srand config.seed
-=end
+  #Kernel.srand config.seed
 end
