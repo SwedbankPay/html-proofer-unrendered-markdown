@@ -1,5 +1,5 @@
 require "html/proofer/unrendered/markdown/version"
-require "unrendered-link-checker"
+require_relative "unrendered-link-checker"
 
 module Html
     module Proofer
