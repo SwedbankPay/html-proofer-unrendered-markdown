@@ -1,5 +1,4 @@
-class Unrendered::Link::Checker < ::HTMLProofer::Check
-
+class Chercker < ::HTMLProofer::Check
     def run
         return unless @options[:check_unrendered_link]
         print @html
