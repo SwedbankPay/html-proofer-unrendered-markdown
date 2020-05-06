@@ -83,7 +83,7 @@ jobs:
       env:
         GEM_VERSION: ${{ steps.gemversion.outputs.version }}
       run: |
-        GEM_BUILD_NAME=$(gem build kramdown-plantuml.gemspec | awk '/File/ {print $2}')
+        GEM_BUILD_NAME=$(gem build html-proofer-unrendered-markdown.gemspec | awk '/File/ {print $2}')
         echo "Gem filename: '${GEM_BUILD_NAME}'"
         echo "::set-output name=name::${GEM_BUILD_NAME}"
 
