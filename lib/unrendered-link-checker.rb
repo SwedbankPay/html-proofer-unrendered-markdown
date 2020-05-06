@@ -4,7 +4,7 @@ class Chercker < ::HTMLProofer::Check
         @html.xpath("//*[text()[contains(.,'][')]]").each do |node|
             line = node.line
             content = node.to_s
-            add_issue("Contains unrendered link ][!", line: line, content: content)
+            add_issue("Contains unrendered link ][! #{content}", line: line)
           end
     end
 end
