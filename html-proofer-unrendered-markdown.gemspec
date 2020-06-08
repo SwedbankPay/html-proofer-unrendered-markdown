@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   
   spec.add_development_dependency "bundler", "~> 2.1.4"
-  spec.add_development_dependency "rake", "~> 12.3.1"
+  spec.add_development_dependency "rake", "~> 13.0.1"
   spec.add_runtime_dependency 'html-proofer', '~> 3.0', '>= 3.15.1'
   spec.add_development_dependency 'rspec', '~> 3.5', '>= 3.5.0'
   spec.add_development_dependency 'vcr', '>= 3.0.3', '~> 6.0'
