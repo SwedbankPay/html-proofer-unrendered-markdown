@@ -43,7 +43,7 @@ Bug reports and pull requests are welcome.
 
 This project is intended to be a safe, welcoming space for collaboration, and
 contributors are expected to adhere to the
-[code of conduct](https://github.com/swedbankpay/html-proofer-unrendered-markdown/blob/master/CODE_OF_CONDUCT.md).
+[code of conduct](https://github.com/swedbankpay/html-proofer-unrendered-markdown/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -51,6 +51,6 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Html::Proofer::Unrendered::Markdown project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/html-proofer-unrendered-markdown/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Html::Proofer::Unrendered::Markdown project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/html-proofer-unrendered-markdown/blob/main/CODE_OF_CONDUCT.md).
 
 [html-proofer]: https://github.com/gjtorikian/html-proofer
