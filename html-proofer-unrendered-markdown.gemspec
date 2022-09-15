@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "Adds extra validation to rendered markdown"
   spec.homepage      = "https://github.com/SwedbankPay/html-proofer-unrendered-markdown"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
@@ -22,10 +22,10 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  
+
   spec.add_development_dependency "bundler", "~> 2.2.1"
   spec.add_development_dependency "rake", "~> 13.0.1"
-  spec.add_runtime_dependency 'html-proofer', '~> 3.0', '>= 3.15.1'
+  spec.add_runtime_dependency 'html-proofer', '>= 4.0.0'
   spec.add_development_dependency 'rspec', '~> 3.5', '>= 3.5.0'
   spec.add_development_dependency 'vcr', '>= 3.0.3', '~> 6.0'
 end
