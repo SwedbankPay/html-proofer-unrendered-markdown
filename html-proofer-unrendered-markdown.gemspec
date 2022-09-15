@@ -3,8 +3,8 @@ require_relative 'lib/html/proofer/unrendered/markdown/version'
 Gem::Specification.new do |spec|
   spec.name          = "html-proofer-unrendered-markdown"
   spec.version       = Html::Proofer::Unrendered::Markdown::VERSION
-  spec.authors       = ["Daniel Granerud"]
-  spec.email         = ["daniel.granerud@payex.com"]
+  spec.authors       = ["Swedbank Pay"]
+  spec.email         = ["opensource@swedbankpay.com"]
 
   spec.summary       = "Adds extra validation to rendered markdown"
   spec.homepage      = "https://github.com/SwedbankPay/html-proofer-unrendered-markdown"
