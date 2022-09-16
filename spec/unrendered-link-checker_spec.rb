@@ -10,8 +10,7 @@ RSpec.describe "Unrendered link checker" do
        :check_unrendered_link => check_unrendered_link
     }
     proofer = HTMLProofer.check_file(path, options)
-    cassette_name = make_cassette_name(path)
-    VCR.use_cassette(cassette_name) { capture_stderr { proofer.run } }
+    capture_stderr { proofer.run }
     proofer.failed_checks
   end
 
