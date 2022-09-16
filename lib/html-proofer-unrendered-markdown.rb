@@ -1,10 +1,13 @@
 require "html/proofer/unrendered/markdown/version"
-require_relative "unrendered-link-checker"
 
-module Html
-    module Proofer
-        module Unerendered
-            class Error < StandardError; end
-        end
+class UnrenderedLinkChecker < ::HTMLProofer::Check
+  def run
+    return unless @runner.options[:check_unrendered_link]
+
+    @html.xpath("//*[text()[contains(.,'][')]]").each do |node|
+      line = node.line
+      content = node.to_s
+      return add_failure("Contains unrendered link ][! #{content}", line: line)
     end
+  end
 end
