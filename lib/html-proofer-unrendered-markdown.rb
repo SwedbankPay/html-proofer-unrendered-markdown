@@ -1,3 +1,4 @@
+# rubocop:disable Naming/FileName
 # frozen_string_literal: true
 
 require 'html/proofer/unrendered/markdown/version'
@@ -17,3 +18,5 @@ class UnrenderedLink < ::HTMLProofer::Check
     add_failure("Contains unrendered link ][! #{content}", line: line_number)
   end
 end
+
+# rubocop:enable Naming/FileName
