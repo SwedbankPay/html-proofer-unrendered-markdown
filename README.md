@@ -28,12 +28,15 @@ gem install html-proofer-unrendered-markdown
 Add the following to your [HTML-Proofer][html-proofer] setup:
 
 ```rb
-:check_unrendered_link => true
+{
+    :check_unrendered_link => true,
+    :checks => ['UnrenderedLink']
+}
 ```
 
 ## Development
 
-Run docker, or run `bundle exec rake install`.
+Run `bundle exec rake` to run tests.
 
 To release a new version, tag the commit and push.
 

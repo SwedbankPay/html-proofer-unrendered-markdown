@@ -1,56 +1,16 @@
-require 'html-proofer'
 require 'rspec'
-require 'vcr'
-require_relative '../lib/html-proofer-unrendered-markdown'
-
-# Setup inspried from https://github.com/fulldecent/html-proofer-mailto_awesome/
-
-FIXTURES_DIR = 'spec/fixtures'
-
-def make_proofer(item, type, opts)
-  opts[:log_level] ||= :error
-  case type
-    when :file
-      HTMLProofer.check_file(item, opts)
-    when :directory
-      HTMLProofer.check_directory(item, opts)
-    when :directories
-      HTMLProofer.check_directories(item, opts)
-    when :links
-      HTMLProofer.check_links(item, opts)
-  end
-end
-
-def run_proofer(item, type, opts = {})
-  proofer = make_proofer(item, type, opts)
-  cassette_name = make_cassette_name(item, opts)
-  VCR.use_cassette(cassette_name, :record => :new_episodes) do
-    capture_stderr { proofer.run }
-    proofer
-  end
-end
-
-def make_cassette_name(file, opts)
-  filename = if file.is_a? Array
-               file.join('_')
-             else
-               file.split('/')[-2..-1].join('/')
-             end
-  (filename += opts.inspect) unless opts.empty?
-  filename
-end
 
 def capture_stderr(*)
   original_stderr = $stderr
   original_stdout = $stdout
   $stderr = fake_err = StringIO.new
-  $stdout = fake_out = StringIO.new unless ENV['VERBOSE']
+  $stdout = StringIO.new unless ENV["VERBOSE"]
   begin
     yield
-  rescue RuntimeError
+  rescue SystemExit # rubocop:disable Lint/SuppressedException
   ensure
     $stderr = original_stderr
-    $stdout = original_stdout unless ENV['VERBOSE']
+    $stdout = original_stdout unless ENV["VERBOSE"]
   end
   fake_err.string
 end

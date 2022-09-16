@@ -1,22 +1,43 @@
-require "spec_helper"
+require "its"
+require "html-proofer"
+require "html-proofer-unrendered-markdown"
 
-RSpec.describe 'Unrendered link checker' do
-    it 'gives a error message when finding a broken link' do
-        file = "#{FIXTURES_DIR}/unrendered_link.html"
-        proofer = run_proofer(file, :file, {:check_unrendered_link => true})
-        expect(proofer.failed_tests.last).to match(']\[')
+RSpec.describe "Unrendered link checker" do
+  subject(:failed_checks) do
+    path = File.join(__dir__, "fixtures", file)
+    options = {
+       :checks => [UnrenderedLink.to_s],
+       :check_unrendered_link => check_unrendered_link
+    }
+    proofer = HTMLProofer.check_file(path, options)
+    capture_stderr { proofer.run }
+    proofer.failed_checks
+  end
+
+  context "gives an error message when finding a broken link" do
+    let(:file) { "unrendered_link.html" }
+    let(:check_unrendered_link) { true }
+    it { is_expected.not_to be_empty }
+
+    describe 'the last failed check' do
+      subject { failed_checks.last }
+      its(:check_name) { is_expected.to eq UnrenderedLink.to_s }
+      its(:description) { is_expected.to include 'Contains unrendered link ][' }
+      its(:line) { is_expected.to eq 4 }
     end
+  end
 
-    it 'does not emit anything when not configured to run' do
-        file = "#{FIXTURES_DIR}/unrendered_link.html"
-        proofer = run_proofer(file, :file, {:check_unrendered_link => false})
-        expect(proofer.failed_tests.last).to eq nil
-    end
+  context "does not emit anything when not configured to run" do
+    let(:file) { "unrendered_link.html" }
+    let(:check_unrendered_link) { false }
+    it { is_expected.to be_empty }
+    its(:last) { is_expected.to be_nil }
+  end
 
-    it 'does not emit anything when configured to run and there is no problem' do
-        file = "#{FIXTURES_DIR}/just_fine.html"
-        proofer = run_proofer(file, :file, {:check_unrendered_link => true})
-        expect(proofer.failed_tests.last).to eq nil
-    end
-
+  context "does not emit anything when configured to run and there is no problem" do
+    let(:file) { "just_fine.html" }
+    let(:check_unrendered_link) { true }
+    it { is_expected.to be_empty }
+    its(:last) { is_expected.to be_nil }
+  end
 end

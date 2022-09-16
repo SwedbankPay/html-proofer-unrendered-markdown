@@ -1,10 +1,22 @@
-require "html/proofer/unrendered/markdown/version"
-require_relative "unrendered-link-checker"
+# rubocop:disable Naming/FileName
+# frozen_string_literal: true
 
-module Html
-    module Proofer
-        module Unerendered
-            class Error < StandardError; end
-        end
-    end
+require 'html/proofer/unrendered/markdown/version'
+
+# HTMLProofer check for unrendered link
+class UnrenderedLink < ::HTMLProofer::Check
+  def run
+    return unless @runner.options[:check_unrendered_link]
+
+    node = @html.at_xpath("//*[text()[contains(.,'][')]]")
+
+    return if node.nil?
+
+    line_number = node.line
+    content = node.to_s
+
+    add_failure("Contains unrendered link ][! #{content}", line: line_number)
+  end
 end
+
+# rubocop:enable Naming/FileName
