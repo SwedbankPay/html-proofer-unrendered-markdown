@@ -78,7 +78,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.2.1)
+  bundler (>= 2.2.1)
   html-proofer-unrendered-markdown!
   its (>= 0.2)
   rake (~> 13.0)
