@@ -23,6 +23,7 @@ RSpec.describe "Unrendered link checker" do
       subject { failed_checks.last }
       its(:check_name) { is_expected.to eq UnrenderedLinkChecker.to_s }
       its(:description) { is_expected.to include 'Contains unrendered link ][' }
+      its(:line) { is_expected.to eq 4 }
     end
   end
 
