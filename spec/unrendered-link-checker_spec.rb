@@ -6,7 +6,7 @@ RSpec.describe "Unrendered link checker" do
   subject(:failed_checks) do
     path = File.join(__dir__, "fixtures", file)
     options = {
-       :checks => [UnrenderedLinkChecker.to_s],
+       :checks => [UnrenderedLink.to_s],
        :check_unrendered_link => check_unrendered_link
     }
     proofer = HTMLProofer.check_file(path, options)
@@ -21,7 +21,7 @@ RSpec.describe "Unrendered link checker" do
 
     describe 'the last failed check' do
       subject { failed_checks.last }
-      its(:check_name) { is_expected.to eq UnrenderedLinkChecker.to_s }
+      its(:check_name) { is_expected.to eq UnrenderedLink.to_s }
       its(:description) { is_expected.to include 'Contains unrendered link ][' }
       its(:line) { is_expected.to eq 4 }
     end

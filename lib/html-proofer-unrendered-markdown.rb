@@ -2,8 +2,8 @@
 
 require 'html/proofer/unrendered/markdown/version'
 
-# HTMLProofer check for unrendered markdown
-class UnrenderedLinkChecker < ::HTMLProofer::Check
+# HTMLProofer check for unrendered link
+class UnrenderedLink < ::HTMLProofer::Check
   def run
     return unless @runner.options[:check_unrendered_link]
 
