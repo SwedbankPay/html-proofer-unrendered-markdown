@@ -69,7 +69,7 @@ jobs:
         echo "::set-output name=name::${GEM_BUILD_NAME}"
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v2-preview
+      uses: actions/upload-artifact@v3.1.1
       with:
         name: ${{ steps.gem.outputs.name }}
         path: ${{ steps.gem.outputs.name }}
